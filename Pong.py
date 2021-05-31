@@ -34,8 +34,10 @@ ball.color("white")
 ball.speed(0)
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.1
-ball.dy = 0.1
+
+# Speed control
+ball.dx = 0.2
+ball.dy = 0.2
 
 
 
@@ -79,4 +81,12 @@ while True:
 
     if ball.xcor() > 390 or ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx *= -1
+
+    # Paddle and ball collision
+    if ball.xcor() > 330 and ball.xcor() < 333 and ball.ycor() < paddle_b.ycor() + 60 and ball.ycor() > paddle_b.ycor() - 60:
+        ball.setx(330)
+        ball.dx *= -1
+    if ball.xcor() < -330 and ball.xcor() > -333 and ball.ycor() < paddle_a.ycor() + 60 and ball.ycor() > paddle_a.ycor() - 60:
+        ball.setx(-330)
         ball.dx *= -1
